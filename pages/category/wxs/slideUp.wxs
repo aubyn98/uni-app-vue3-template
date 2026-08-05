@@ -1,0 +1,130 @@
+var me = {
+	offset: -50
+}
+
+me.onMoving = function(ins, upHight) {
+	ins.requestAnimationFrame(function() {
+		ins.selectComponent('#scroll-content').setStyle({
+			'will-change': 'transform', // 可解决下拉过程中, image和swiper脱离文档流的问题
+			'transform': 'translateY(' + upHight + 'px)',
+			'transition': ''
+		})
+	})
+}
+
+/**
+ * 监听逻辑层数据的变化 (实时更新数据)
+ */
+function propObserver(wxsProp) {
+	if (!wxsProp) return
+	me.canSlideUp = wxsProp.canSlideUp
+	me.optDown = wxsProp.optDown
+	me.bodyHeight = wxsProp.bodyHeight
+}
+
+/**
+ * touch事件
+ */
+function touchstartEvent(e, ins) {
+	me.upHight = 0; // 下拉的距离
+	me.startPoint = me.getPoint(e); // 记录起点
+	me.lastPoint = me.startPoint; // 重置上次move的点
+	me.maxTouchmoveY = me.getBodyHeight() - me.optDown.bottomOffset; // 手指触摸的最大范围(写在touchstart避免body获取高度为0的情况)
+
+	me.callMethod(ins, {
+		type: 'setWxsProp'
+	}) // 同步更新wxsProp的数据 (小程序是异步的,可能touchmove先执行,才到propObserver; h5和app是同步)
+}
+
+function touchmoveEvent(e, ins) {
+	var isPrevent = true;
+	if (me.disabled()) return isPrevent;
+	var curPoint = me.getPoint(e); // 当前点
+	var moveY = curPoint.y - me.startPoint.y; // 和起点比,移动的距离,大于0向下拉,小于0向上拉
+	// 上拉
+	if (moveY < 0) {
+		if (moveY < me.offset) moveY = me.offset
+
+	} else {
+		if (moveY > 0) moveY = 0
+	}
+	if (moveY == me.offset) {
+		me.callMethod(ins, {
+			type: 'moveEnd'
+		})
+	} else {
+		me.callMethod(ins, {
+			type: 'move'
+		})
+	}
+	me.upHight = Math.round(moveY) // 取整
+	me.lastPoint = curPoint;
+	me.onMoving(ins, me.upHight)
+	return isPrevent
+}
+
+function touchendEvent(e, ins) {
+	if (me.disabled()) return;
+	if (me.upHight == me.offset) {
+		me.callMethod(ins, {
+			type: 'touchend'
+		})
+	}
+	me.onMoving(ins, 0)
+
+	me.callMethod(ins, {
+		type: 'setWxsProp'
+	})
+}
+
+/* 是否禁用下拉刷新 */
+me.disabled = function() {
+	return !me.canSlideUp
+}
+
+/* 根据点击滑动事件获取第一个手指的坐标 */
+me.getPoint = function(e) {
+	if (!e) {
+		return {
+			x: 0,
+			y: 0
+		}
+	}
+	if (e.touches && e.touches[0]) {
+		return {
+			x: e.touches[0].pageX,
+			y: e.touches[0].pageY
+		}
+	} else if (e.changedTouches && e.changedTouches[0]) {
+		return {
+			x: e.changedTouches[0].pageX,
+			y: e.changedTouches[0].pageY
+		}
+	} else {
+		return {
+			x: e.clientX,
+			y: e.clientY
+		}
+	}
+}
+
+
+
+
+/* 获取body的高度 */
+me.getBodyHeight = function() {
+	return me.bodyHeight || 0;
+}
+
+/* 调用逻辑层的方法 */
+me.callMethod = function(ins, param) {
+	if (ins) ins.callMethod('wxsCall', param)
+}
+
+/* 导出模块 */
+module.exports = {
+	propObserver: propObserver,
+	touchstartEvent: touchstartEvent,
+	touchmoveEvent: touchmoveEvent,
+	touchendEvent: touchendEvent
+}

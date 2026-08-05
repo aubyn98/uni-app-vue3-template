@@ -1,0 +1,148 @@
+@import  '../../theme.scss';
+
+@mixin getColor($color, $bg-color, $shadow-size, $shadow-color) {
+	color: $color;
+	background: $bg-color;
+	box-shadow: 0 4rpx $shadow-size $shadow-color;
+}
+
+
+.custom-button {
+	flex-shrink: 0;
+	padding: 0 12rpx;
+	text-align: center;
+	font-size: 0;
+	font-weight: 500;
+	@include getBorderRadius(16rpx);
+	height: 80rpx;
+	line-height: 80rpx;
+	
+	&._small{
+		height: 72rpx;
+		line-height: 72rpx;
+		text {
+			font-size: 28rpx;
+		}
+	}
+	
+	image {
+		width: 40rpx;
+		height: 40rpx;
+		margin-right: 12rpx;
+		vertical-align: middle;
+	}
+
+	text {
+		font-size: 30rpx;
+		vertical-align: middle;
+	}
+
+	&::after {
+		border-color: transparent; //黑色边框去掉了
+		border-width: 4rpx;
+	}
+
+	&._bold {
+		font-weight: 700;
+	}
+
+	&._round {
+		@include getBorderRadius(160rpx);
+	}
+
+	&._success {
+		@include getColor(white, $success-color, 20rpx, rgba(128, 212, 127, 0.5));
+
+		&._plain {
+			color: $success-color;
+
+			&::after {
+				border-color: $success-color;
+			}
+		}
+	}
+
+	&._warning {
+		@include getColor(#333, $warning-color, 16rpx, rgba(246, 205, 101, 0.3));
+
+		&._plain {
+			color: $warning-color;
+
+			&::after {
+				border-color: $warning-color;
+			}
+		}
+	}
+
+	&._danger {
+		@include getColor(white, $danger-color, 20rpx, rgba(255, 137, 137, 0.5));
+
+		&._plain {
+			color: $danger-color;
+
+			&::after {
+				border-color: $danger-color;
+			}
+		}
+	}
+
+	&._info {
+		@include getColor(white, $info-color, 20rpx, rgba(192, 192, 192, 0.5));
+
+		&._plain {
+			color: $info-color;
+
+			&::after {
+				border-color: $info-color;
+			}
+		}
+	}
+	
+	&._disabled {
+		@include getColor(white, $disabled-color, 20rpx, none);
+	
+		&._plain {
+			color: $disabled-color;
+	
+			&::after {
+				border-color: $disabled-color;
+			}
+		}
+	}
+	
+	
+	&._blod {
+		@include getColor(#bcbcbc, #f8f8f8, 20rpx, #ffffff);
+		
+		&._plain {
+			color: #bcbcbc;
+	
+			&::after {
+				border-color: #bcbcbc;
+			}
+		}
+	}
+
+	&._plain {
+		position: relative;
+		overflow: visible;
+		box-shadow: none;
+		background-color: transparent;
+	}
+	
+	
+	
+	&[disabled]{
+		background: $disabled-color;
+		box-shadow: none;
+		color: white;
+		
+		&._plain {
+			color: white;
+			&::after {
+				border-color: $disabled-color;
+			}
+		}
+	}
+
+}

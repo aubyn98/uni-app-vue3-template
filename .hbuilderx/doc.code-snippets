@@ -1,0 +1,168 @@
+{
+	// 注意：本文档仅支持单行注释，并且'//'前不能有任何非空字符！！！
+
+	// 文档：https://hx.dcloud.net.cn/Tutorial/Language/Snippets?id=%e8%87%aa%e5%ae%9a%e4%b9%89%e4%bb%a3%e7%a0%81%e5%9d%97
+	// 例子:
+	"jsdoc": {
+		"scope": "source.js",
+		"prefix": "jsdoc",
+		"body": [
+			"/** $1 */"
+		],
+		"triggerAssist": false,
+		"description": "JSDOC"
+	},
+	"impUtils": {
+		"scope": "source.js",
+		"prefix": "impUtils",
+		"body": [
+			"import { $1 } from '@/common/utils'"
+		],
+		"triggerAssist": false,
+		"description": "impUtils"
+	},
+	"impApis": {
+		"scope": "source.js",
+		"prefix": "impApis",
+		"body": [
+			"import * as apis from '@/common/apis'"
+		],
+		"triggerAssist": false,
+		"description": "impApis"
+	},
+	"impConfig": {
+		"scope": "source.js",
+		"prefix": "impConfig",
+		"body": [
+			"import { $1 } from '@/common/config'"
+		],
+		"triggerAssist": false,
+		"description": "impConfig"
+	},
+	"impMixins": {
+		"scope": "source.js",
+		"prefix": "impMixins",
+		"body": [
+			"import { $1 } from '@/common/mixins'"
+		],
+		"triggerAssist": false,
+		"description": "impMixins"
+	},
+	"impStore": {
+		"scope": "source.js",
+		"prefix": "impStore",
+		"body": [
+			"import store from '@/store'"
+		],
+		"triggerAssist": false,
+		"description": "impStore"
+	},
+	"pdObject": {
+		"scope": "source.js",
+		"prefix": "pdobj",
+		"body": [
+			"$1: {",
+			"	type: Object,",
+			"	default: () => ({})",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default Object"
+	},
+	"pdArray": {
+		"scope": "source.js",
+		"prefix": "pdarr",
+		"body": [
+			"$1: {",
+			"	type: Array,",
+			"	default: () => []",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default Array"
+	},
+	"pdBoolean": {
+		"scope": "source.js",
+		"prefix": "pdbool",
+		"body": [
+			"$1: {",
+			"	type: Boolean,",
+			"	default: false",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default Boolean"
+	},
+	"pdString": {
+		"scope": "source.js",
+		"prefix": "pdstr",
+		"body": [
+			"$1: {",
+			"	type: String,",
+			"	default: ''",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default String"
+	},
+	"pdNumber": {
+		"scope": "source.js",
+		"prefix": "pdnum",
+		"body": [
+			"$1: {",
+			"	type: Number,",
+			"	default: 0",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default Number"
+	},
+	"pdNumOrStr": {
+		"scope": "source.js",
+		"prefix": "pdnos",
+		"body": [
+			"$1: {",
+			"	type: [Number, String],",
+			"	default: ''",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default Number or String"
+	},
+	"pdObjOrStr": {
+		"scope": "source.js",
+		"prefix": "pdoos",
+		"body": [
+			"$1: {",
+			"	type: [Object, String],",
+			"	default: ''",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default Object or String"
+	},
+	"watch handler": {
+		"scope": "source.js",
+		"prefix": "vwha",
+		"body": [
+			"$1: {",
+			"	handler(v) {},",
+			"	immediate: true,",
+			"	deep: true",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "props default Number"
+	},
+	"new Promise": {
+		"scope": "source.js",
+		"prefix": "npromise",
+		"body": [
+			"return new Promise((resolve, reject) => {",
+			"	$1",
+			"})"
+		],
+		"triggerAssist": false,
+		"description": "props default Number"
+	}
+}

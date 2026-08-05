@@ -1,0 +1,16 @@
+{
+  "name": "uni-app-vue3-haowanjia",
+  "version": "1.0.0",
+  "description": "好万家门店送药上门",
+  "main": "main.js",
+  "dependencies": {
+    "clipboard": "^2.0.11",
+    "dayjs": "^1.11.10",
+    "pinia": "^2.1.7",
+    "uview-plus": "^3.3.0",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8"
+  }
+}

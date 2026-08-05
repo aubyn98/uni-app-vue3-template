@@ -1,0 +1,141 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^u-(.*)": "uview-plus/components/u-$1/u-$1.vue",
+			"^c-(.*)": "@/components/custom-ui/components/c-$1/c-$1.vue",
+			"^p-goods-(.*)": "@/components/project-ui/goods/p-goods-$1.vue"
+		}
+	},
+	"pages": [
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/category/category",
+			"style": {
+				"navigationBarTitleText": "分类",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/myCart/myCart",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
+	"subPackages": [{
+			"root": "packageGoods",
+			"pages": [{
+				"path": "pages/search/search",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+
+			}]
+		},
+		{
+			"root": "packageMine",
+			"pages": [{
+				"path": "pages/placeholder/placeholder",
+				"style": {
+					"navigationBarTitleText": "快捷登陆",
+					"navigationBarTextStyle": "black",
+					"navigationBarBackgroundColor": "#FFFFFF",
+					"navigationStyle": "custom",
+					"backgroundColor": "#FFFFFF"
+				}
+			}]
+		},
+		{
+			"root": "packageOther",
+			"pages": [{
+				"path": "pages/errorPage/errorPage",
+				"style": {
+					"navigationBarTitleText": "",
+					"enablePullDownRefresh": false
+				}
+			}]
+		}
+	],
+	"preloadRule": {
+		"pages/home/home": {
+			"network": "all",
+			"packages": ["packageGoods", "packageMine"]
+		},
+		"pages/category/category": {
+			"network": "all",
+			"packages": ["packageGoods", "packageMine"]
+		},
+		"pages/myCart/myCart": {
+			"network": "all",
+			"packages": ["packageGoods", "packageMine"]
+		},
+		"pages/mine/mine": {
+			"network": "all",
+			"packages": ["packageGoods", "packageMine"]
+		}
+	},
+	"tabBar": {
+		"color": "#333333",
+		"selectedColor": "#04AA58",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"height": "20px",
+		"fontSize": "10px",
+		"iconWidth": "22px",
+		"spacing": "3px",
+		"custom": true,
+		"list": [{
+			"pagePath": "pages/home/home",
+			"iconPath": "/static/images/tabs/icon_sy@2x.png",
+			"selectedIconPath": "/static/images/tabs/icon_sy2@2x.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/category/category",
+			"iconPath": "/static/images/tabs/icon_fl@2x.png",
+			"selectedIconPath": "/static/images/tabs/icon_fl2@2x.png",
+			"text": "找药"
+		}, {
+			"pagePath": "pages/myCart/myCart",
+			"iconPath": "/static/images/tabs/icon_gwc@2x.png",
+			"selectedIconPath": "/static/images/tabs/icon_gwc2@2x.png",
+			"text": "购物车"
+		}, {
+			"pagePath": "pages/mine/mine",
+			"iconPath": "/static/images/tabs/icon_my@2x.png",
+			"selectedIconPath": "/static/images/tabs/icon_my2@2x.png",
+			"text": "我的"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"onReachBottomDistance": 100
+	},
+	"condition": {
+		"current": 0, //当前激活的模式（list 的索引项）
+		"list": []
+	}
+}

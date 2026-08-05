@@ -1,0 +1,59 @@
+@mixin textLineClamp($num:1) {
+  @if $num == 1 {
+    white-space: nowrap;
+  } @else if $num > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin safe-padding-bottom($num: 0rpx){
+	padding-bottom: $num;
+	/*兼容 IOS<11.2*/
+	padding-bottom: calc(constant(safe-area-inset-bottom) + #{$num});
+	padding-bottom: calc(env(safe-area-inset-bottom) + #{$num});
+}
+%safe-padding-bottom {
+	@include safe-padding-bottom;
+}
+
+@mixin safe-margin-bottom($num: 0rpx){
+	margin-bottom: $num;
+	/*兼容 IOS<11.2*/
+	margin-bottom: calc(constant(safe-area-inset-bottom) + #{$num});
+	margin-bottom: calc(env(safe-area-inset-bottom) + #{$num});
+}
+%safe-margin-bottom {
+	@include safe-margin-bottom;
+}
+
+@mixin borderHalfPx($borderColor: #ddd, $borderRadius: 0, $borderTop: 0, $borderRight: 0, $borderBottom: 0, $borderLeft: 0, $borderStyle: solid) {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 200%;
+        height: 200%;
+		    box-sizing: border-box;
+        border-radius: $borderRadius * 2;
+        border: $borderTop $borderStyle $borderColor;
+        border-right-width: $borderRight;
+        border-bottom-width: $borderBottom;
+        border-left-width: $borderLeft;
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        transform: scale(.5, .5);
+        -webkit-transform: scale(.5, .5);
+    }
+}
+// 0.5px
+@mixin borderHalfPxRound($borderColor: #ddd, $borderRadius: 0) {
+     @include borderHalfPx($borderColor, $borderRadius, 1rpx, 1rpx, 1rpx, 1rpx);
+}

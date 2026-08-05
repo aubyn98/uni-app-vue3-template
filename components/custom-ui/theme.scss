@@ -1,0 +1,37 @@
+$success-color: #2dbf77;
+$primary-color: $success-color;
+$warning-color: #ffcb45;
+$danger-color: #fc5936;
+$info-color: #666666;
+$disabled-color:#ccc;
+
+@mixin getBorderRadius($size) {
+	border-radius: $size;
+	&._plain::after {
+		border-radius: $size * 2;
+	}
+}
+
+@mixin safe-padding-bottom{
+	padding-bottom: 0;
+	/*兼容 IOS<11.2*/
+	padding-bottom: constant(safe-area-inset-bottom);
+	padding-bottom: env(safe-area-inset-bottom);
+}
+
+@mixin safe-margin-bottom{
+	margin-bottom: 0;
+	/*兼容 IOS<11.2*/
+	margin-bottom: constant(safe-area-inset-bottom);
+	margin-bottom: env(safe-area-inset-bottom);
+}
+
+@mixin top-radius{
+		border-top-left-radius: 16rpx;
+		border-top-right-radius: 16rpx;
+}
+
+@mixin bottom-radius{
+	border-bottom-left-radius: 16rpx;
+	border-bottom-right-radius: 16rpx;
+}
