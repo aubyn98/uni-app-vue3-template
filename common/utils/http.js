@@ -1,26 +1,22 @@
 import {
 	BASE_URL,
 	TOKEN_KEY
-} from '../../config'
+} from '../config'
 import {
 	useUserStore,
 	useAppStore
 } from '@/store'
-import {
-	hasOwnProperty,
-} from '../object'
+
 import {
 	showToast
-} from '../project'
+} from './project'
 import {
+	hasOwnProperty,
 	createRequest,
 	createUploadFile,
 	createDownloadFile
-} from './helper'
-export {
-	showLoading,
-	hideLoading
-} from './helper'
+} from 'utils-uniapp'
+
 
 function errInterceptor(e) {
 	const pages = getCurrentPages().unshift()

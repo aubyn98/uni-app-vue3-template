@@ -32,7 +32,7 @@
 <script>
 	import {
 		throttle
-	} from '@/common/utils/magic';
+	} from '@/common/utils';
 	export default {
 		props: {
 			position: {
