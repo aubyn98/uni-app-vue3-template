@@ -9,15 +9,21 @@ export const useStatusBarStore = defineStore('statusBar', {
 	}),
 	actions: {
 		initBarInfo() {
-			const statusBarHeight = this.statusBarHeight = uni.getWindowInfo().statusBarHeight;
-			let MenuButton = uni.getMenuButtonBoundingClientRect()
+			let statusBarHeight = uni.$u.sys('getWindowInfo').statusBarHeight;
+			const MenuButton = uni.getMenuButtonBoundingClientRect()
 			while (!MenuButton || MenuButton.left == 0 || MenuButton.right == 0 || MenuButton.top == 0 || MenuButton
 				.bottom == 0 ||
 				MenuButton.width == 0 || MenuButton.height == 0) {
 				MenuButton = uni.getMenuButtonBoundingClientRect()
 			}
+			let marginTop = MenuButton.top - statusBarHeight
+			if (marginTop < 0) {
+				marginTop = 4
+				statusBarHeight = statusBarHeight - marginTop * 2
+			}
+			this.statusBarHeight = statusBarHeight
 			this.MenuButton = {
-				marginTop: MenuButton.top - statusBarHeight,
+				marginTop,
 				...MenuButton
 			};
 			this.titleHeight = MenuButton.height + MenuButton.top + this.MenuButton.marginTop
