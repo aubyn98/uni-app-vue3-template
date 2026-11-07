@@ -18,8 +18,8 @@ importers:
         specifier: ^2.1.7
         version: 2.3.1(vue@3.5.41)
       utils-uniapp:
-        specifier: ^1.2.22
-        version: 1.2.22
+        specifier: ^1.2.23
+        version: 1.2.23
       uview-plus:
         specifier: ^3.3.0
         version: 3.8.106
@@ -256,8 +256,8 @@ packages:
   tiny-emitter@2.1.0:
     resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
 
-  utils-uniapp@1.2.22:
-    resolution: {integrity: sha512-k76hRj3hl4bFJ5azaxJ37NE6GpLCp9+6TxmXoAl+FuYTRcHtg9hqe4Tqqccikn1JlqSPKKkirTs0b/FB/txrdg==}
+  utils-uniapp@1.2.23:
+    resolution: {integrity: sha512-9PiPBPDGs3wdkNAGQMcvhEmChtGtj95z4ksrXsDiCMS+Vwlf9hawvWJ/3hFbib//tt0tWY2Aoayp2EB2rFZfsQ==}
 
   uview-plus@3.8.106:
     resolution: {integrity: sha512-U32j/AamwJTuF6f5JLMXYihjutBLdYedCouzjKQV7nEP/wUAQo9HYFwSgvgx+iMG0cDPfiREL2K1fIYwQ3Syjw==}
@@ -493,7 +493,7 @@ snapshots:
 
   tiny-emitter@2.1.0: {}
 
-  utils-uniapp@1.2.22: {}
+  utils-uniapp@1.2.23: {}
 
   uview-plus@3.8.106: {}
 
